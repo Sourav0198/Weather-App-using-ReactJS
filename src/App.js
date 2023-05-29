@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 import './App.css';
 import Spinner from './Spinner';
 import Navbar from "./navbar";
+ 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  
+} from "react-router-dom";
+
 
 function App() {
   
@@ -15,7 +23,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const getWetherDetails = (cityName) => {
+  const getWetherDetails = async(cityName) => {
     if (!cityName) return
     const apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey
     axios.get(apiURL).then((res) => {
@@ -59,11 +67,15 @@ function App() {
   return (
    
     <div className="col-md-12">
-       {/* <Navbar/> */}
+       {/* <Navbar/> */} 
+       {/* //<Navbar/> */}
+       <Navbar/>
       <div className="wetherBg">
         <h1 className="heading">Weather App</h1>
+        {/* <Navbar/> */}
 
         <div className="d-grid gap-3 col-4 mt-4">
+          
           <input type="text" className="form-control"
             value={inputCity}
             onChange={handleChangeInput} />
